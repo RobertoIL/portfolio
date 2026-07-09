@@ -1,0 +1,45 @@
+---
+import type { Lang, Translations } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	t: Translations;
+}
+
+const { lang, t } = Astro.props;
+const altLang = lang === 'es' ? 'en' : 'es';
+const altHref = lang === 'es' ? '/en/' : '/';
+---
+
+<nav class="site-nav">
+	<div class="container">
+		<a href="#descripcion" class="brand">RI<span>.</span></a>
+		<div class="nav-links">
+			<a href="#educacion">{t.navEdu}</a>
+			<a href="#habilidades">{t.navSkills}</a>
+			<a href="#experiencia">{t.navExp}</a>
+			<a href="#proyectos">{t.navProjects}</a>
+			<a href="#contacto">{t.navContact}</a>
+		</div>
+		<div class="nav-actions">
+			<a class="lang-toggle" href={altHref} data-lang={altLang}>{altLang.toUpperCase()}</a>
+			<button class="theme-toggle" aria-label={t.themeToggleLabel}>
+				<span class="icon-moon" aria-hidden="true">☾</span>
+				<span class="icon-sun" aria-hidden="true">☀</span>
+			</button>
+		</div>
+	</div>
+</nav>
+
+<script>
+	document.querySelector<HTMLAnchorElement>('.lang-toggle')?.addEventListener('click', (e) => {
+		localStorage.setItem('ri-portfolio-lang', (e.currentTarget as HTMLElement).dataset.lang!);
+	});
+
+	document.querySelector('.theme-toggle')?.addEventListener('click', () => {
+		const root = document.documentElement;
+		const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+		root.dataset.theme = theme;
+		localStorage.setItem('ri-portfolio-theme', theme);
+	});
+</script>

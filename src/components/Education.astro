@@ -1,0 +1,21 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import type { Translations } from '../i18n';
+
+interface Props {
+	t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="educacion" class="section">
+	<SectionHeading num="01" title={t.eduTitle} />
+	<div class="card edu-card reveal">
+		<div class="edu-info">
+			<h3>{t.eduDegree}</h3>
+			<p>Universidad de La Frontera · Temuco</p>
+		</div>
+		<span class="period-chip">2021 — 2025</span>
+	</div>
+</section>

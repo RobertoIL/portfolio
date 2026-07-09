@@ -1,0 +1,38 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { techSkills, type Translations } from '../i18n';
+
+interface Props {
+	t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="habilidades" class="section">
+	<SectionHeading num="02" title={t.skillsTitle} />
+	<div class="skills-grid">
+		<div class="card skills-card reveal">
+			<p class="group-label">{t.skillsTech}</p>
+			<div class="chip-list">
+				{techSkills.map((skill) => <span class="chip">{skill}</span>)}
+			</div>
+		</div>
+		<div class="card skills-card stacked reveal">
+			<div>
+				<p class="group-label">{t.skillsMethods}</p>
+				<div class="chip-list">
+					<span class="chip">Scrum</span>
+					<span class="chip">UX/UI</span>
+				</div>
+			</div>
+			<div>
+				<p class="group-label">{t.skillsLang}</p>
+				<div class="chip-list">
+					<span class="chip">{t.spanish}</span>
+					<span class="chip">{t.english}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

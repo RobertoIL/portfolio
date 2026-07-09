@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import type { Lang } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	title: string;
+	description: string;
+}
+
+const { lang, title, description } = Astro.props;
+// Route of this page in the other language, used to honor the saved preference on load.
+const altHref = lang === 'es' ? '/en/' : '/';
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<script is:inline define:vars={{ lang, altHref }}>
+			try {
+				const savedLang = localStorage.getItem('ri-portfolio-lang');
+				if (savedLang && savedLang !== lang) location.replace(altHref);
+				const savedTheme = localStorage.getItem('ri-portfolio-theme');
+				const theme =
+					savedTheme ??
+					(matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				document.documentElement.dataset.theme = theme;
+			} catch {}
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<slot />
+		<script>
+			// Reveal-on-scroll: hide only elements below the fold, then reveal on intersect.
+			const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const inView = (el: Element) => {
+				const r = el.getBoundingClientRect();
+				return r.top < innerHeight - 40 && r.bottom > 0;
+			};
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.remove('is-hidden');
+							io.unobserve(entry.target);
+						}
+					}
+				},
+				{ threshold: 0.12 },
+			);
+			document.querySelectorAll('.reveal').forEach((el) => {
+				if (reduceMotion || inView(el)) return;
+				el.classList.add('is-hidden');
+				io.observe(el);
+			});
+		</script>
+	</body>
+</html>

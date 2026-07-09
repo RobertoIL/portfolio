@@ -1,0 +1,24 @@
+---
+import { contact, type Translations } from '../i18n';
+
+interface Props {
+	t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="descripcion" class="hero">
+	<p class="hero-kicker reveal">{t.heroKicker}</p>
+	<h1 class="reveal">Roberto Illesca</h1>
+	<p class="hero-bio reveal">{t.heroBio}</p>
+	<div class="hero-actions reveal">
+		<a href={contact.cvPath} download="CV Roberto Illesca.pdf" class="btn-primary">↓ {t.cvButton}</a>
+		<a href="#contacto" class="btn-outline">{t.heroContact}</a>
+	</div>
+	<div class="hero-meta reveal">
+		<span>📍 {contact.location}</span>
+		<a href={`mailto:${contact.email}`}>{contact.email}</a>
+		<a href={contact.phoneHref}>{contact.phone}</a>
+	</div>
+</section>

@@ -1,0 +1,18 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import type { Translations } from '../i18n';
+
+interface Props {
+	t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="proyectos" class="section">
+	<SectionHeading num="04" title={t.projectsTitle} />
+	<div class="projects-empty reveal">
+		<p class="title">{t.projectsEmpty}</p>
+		<p class="sub">{t.projectsEmptySub}</p>
+	</div>
+</section>

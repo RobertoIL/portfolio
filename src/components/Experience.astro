@@ -1,0 +1,39 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { jobs, type Lang, type Translations } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<section id="experiencia" class="section">
+	<SectionHeading num="03" title={t.expTitle} />
+	<div class="timeline">
+		{
+			jobs[lang].map((job) => (
+				<div class="timeline-item reveal">
+					<div class="timeline-marker">
+						<span class="dot" />
+						<span class="line" />
+					</div>
+					<div class="card job-card">
+						<div class="job-header">
+							<h3>{job.role}</h3>
+							<span class="period">{job.period}</span>
+						</div>
+						<p class="company">{job.company}</p>
+						<ul>
+							{job.bullets.map((bullet) => (
+								<li>{bullet}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
