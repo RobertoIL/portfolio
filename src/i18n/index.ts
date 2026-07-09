@@ -35,12 +35,11 @@ const es = {
 	projectsEmptySub: 'Esta sección está en construcción.',
 	contactTitle: 'Contacto',
 	contactBlurb: '¿Tienes un proyecto o una oportunidad en mente? Escríbeme y conversemos.',
-	formName: 'Nombre',
-	formMessage: 'Mensaje',
-	formSend: 'Enviar mensaje',
+	contactCta: 'Enviar correo',
 	footerNote: 'Hecho con dedicación desde el sur de Chile',
 	themeToggleLabel: 'Cambiar tema',
-	mailSubject: 'Contacto desde portafolio — ',
+	menuToggleLabel: 'Abrir menú',
+	mailSubject: 'Contacto desde portafolio',
 };
 
 const en: typeof es = {
@@ -71,12 +70,11 @@ const en: typeof es = {
 	projectsEmptySub: 'This section is under construction.',
 	contactTitle: 'Contact',
 	contactBlurb: 'Have a project or opportunity in mind? Write me and let’s talk.',
-	formName: 'Name',
-	formMessage: 'Message',
-	formSend: 'Send message',
+	contactCta: 'Send email',
 	footerNote: 'Made with care from southern Chile',
 	themeToggleLabel: 'Toggle theme',
-	mailSubject: 'Portfolio contact — ',
+	menuToggleLabel: 'Open menu',
+	mailSubject: 'Portfolio contact',
 };
 
 export type Translations = typeof es;
@@ -163,8 +161,6 @@ export const techSkills = [
 
 export const contact = {
 	email: 'robertillesca1@gmail.com',
-	phone: '+56 9 3146 8139',
-	phoneHref: 'tel:+56931468139',
 	location: 'La Unión, Los Ríos, Chile',
 	cvPath: '/assets/CV-Roberto-Illesca.pdf',
 };

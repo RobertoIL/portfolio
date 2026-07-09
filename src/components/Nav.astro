@@ -14,7 +14,7 @@ const altHref = lang === 'es' ? '/en/' : '/';
 <nav class="site-nav">
 	<div class="container">
 		<a href="#descripcion" class="brand">RI<span>.</span></a>
-		<div class="nav-links">
+		<div class="nav-links" id="nav-menu">
 			<a href="#educacion">{t.navEdu}</a>
 			<a href="#habilidades">{t.navSkills}</a>
 			<a href="#experiencia">{t.navExp}</a>
@@ -26,6 +26,16 @@ const altHref = lang === 'es' ? '/en/' : '/';
 			<button class="theme-toggle" aria-label={t.themeToggleLabel}>
 				<span class="icon-moon" aria-hidden="true">☾</span>
 				<span class="icon-sun" aria-hidden="true">☀</span>
+			</button>
+			<button
+				class="nav-burger"
+				aria-label={t.menuToggleLabel}
+				aria-expanded="false"
+				aria-controls="nav-menu"
+			>
+				<span></span>
+				<span></span>
+				<span></span>
 			</button>
 		</div>
 	</div>
@@ -41,5 +51,20 @@ const altHref = lang === 'es' ? '/en/' : '/';
 		const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
 		root.dataset.theme = theme;
 		localStorage.setItem('ri-portfolio-theme', theme);
+	});
+
+	const nav = document.querySelector('.site-nav');
+	const burger = document.querySelector<HTMLButtonElement>('.nav-burger');
+
+	burger?.addEventListener('click', () => {
+		const open = nav?.classList.toggle('is-open') ?? false;
+		burger.setAttribute('aria-expanded', String(open));
+	});
+
+	document.querySelectorAll('.nav-links a').forEach((link) => {
+		link.addEventListener('click', () => {
+			nav?.classList.remove('is-open');
+			burger?.setAttribute('aria-expanded', 'false');
+		});
 	});
 </script>
