@@ -153,6 +153,10 @@ a:hover {
 	cursor: pointer;
 }
 
+button.lang-toggle {
+	line-height: 1;
+}
+
 .theme-toggle {
 	font-size: 14px;
 	width: 32px;
@@ -182,6 +186,13 @@ a:hover {
 
 [data-theme='dark'] .theme-toggle .icon-sun {
 	display: block;
+}
+
+.theme-toggle svg,
+.btn-primary svg,
+.hero-meta svg,
+.contact-line svg {
+	flex: none;
 }
 
 .nav-burger {
@@ -393,6 +404,13 @@ a:hover {
 	color: var(--muted);
 }
 
+.hero-meta span,
+.hero-meta a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+}
+
 .hero-meta a {
 	color: var(--muted);
 }
@@ -469,6 +487,10 @@ a:hover {
 .timeline {
 	display: flex;
 	flex-direction: column;
+}
+
+.timeline[hidden] {
+	display: none;
 }
 
 .timeline-item {
