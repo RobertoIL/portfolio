@@ -4,7 +4,8 @@ Sitio de portafolio personal construido con [Astro](https://astro.build). Sitio 
 
 ## Características
 
-- **i18n con rutas**: `/` (español, idioma por defecto) y `/en/` (inglés). El botón EN/ES de la barra de navegación guarda la preferencia en `localStorage` y las visitas posteriores redirigen automáticamente al idioma elegido.
+- **i18n en una sola ruta**: `/` contiene español e inglés. El botón EN/ES guarda la preferencia en cookie y cambia el contenido sin usar rutas como `/en/`.
+- **Iconos Lucide**: acciones y datos de contacto usan `@lucide/astro`.
 - **Tema claro/oscuro**: alternable desde la barra de navegación, persistido en `localStorage`; por defecto respeta `prefers-color-scheme`. Se aplica antes del primer render para evitar parpadeos (FOUC).
 - **Animaciones de aparición al hacer scroll** con `IntersectionObserver`, respetando `prefers-reduced-motion`.
 - **Formulario de contacto** que abre el cliente de correo con asunto y cuerpo prellenados (`mailto:`).
@@ -16,7 +17,7 @@ Sitio de portafolio personal construido con [Astro](https://astro.build). Sitio 
 src/
 ├── i18n/index.ts            # Traducciones (ES/EN), experiencia laboral, habilidades y datos de contacto
 ├── styles/global.css        # Design tokens (variables CSS) y todos los estilos
-├── layouts/Layout.astro     # <head>, fuentes, script de tema/idioma, animaciones de scroll
+├── layouts/Layout.astro     # <head>, fuentes, script de tema y animaciones de scroll
 ├── components/
 │   ├── PortfolioPage.astro  # Página completa parametrizada por idioma
 │   ├── Nav.astro            # Navegación + botones de idioma y tema
@@ -29,8 +30,7 @@ src/
 │   ├── Footer.astro
 │   └── SectionHeading.astro
 └── pages/
-    ├── index.astro          # Ruta / (ES)
-    └── en/index.astro       # Ruta /en/ (EN)
+    └── index.astro          # Ruta única /
 ```
 
 Para editar el contenido (bio, experiencia, habilidades, contacto), modifica `src/i18n/index.ts`. Los colores y la tipografía se ajustan en los tokens de `src/styles/global.css` (`--accent`, `--radius`, etc.).
