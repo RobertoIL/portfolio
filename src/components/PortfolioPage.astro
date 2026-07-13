@@ -16,6 +16,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = translations[lang];
+const i18n = translations;
 ---
 
 <Layout lang={lang} title={t.metaTitle} description={t.metaDescription}>
@@ -29,4 +30,51 @@ const t = translations[lang];
 		<Contact t={t} />
 	</main>
 	<Footer t={t} />
+	<script define:vars={{ i18n }}>
+		const getCookie = (name) =>
+			document.cookie
+				.split('; ')
+				.find((row) => row.startsWith(`${name}=`))
+				?.split('=')[1];
+
+		const applyLang = (lang) => {
+			const current = i18n[lang] ? lang : 'es';
+			const next = current === 'es' ? 'en' : 'es';
+			document.documentElement.lang = current;
+			document.title = i18n[current].metaTitle;
+			document
+				.querySelector('meta[name="description"]')
+				?.setAttribute('content', i18n[current].metaDescription);
+			document.querySelectorAll('[data-i18n]').forEach((el) => {
+				const key = el.getAttribute('data-i18n');
+				if (key && i18n[current][key]) el.textContent = i18n[current][key];
+			});
+			document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+				const key = el.getAttribute('data-i18n-aria');
+				if (key && i18n[current][key]) el.setAttribute('aria-label', i18n[current][key]);
+			});
+			document.querySelectorAll('[data-lang-panel]').forEach((panel) => {
+				panel.hidden = panel.getAttribute('data-lang-panel') !== current;
+			});
+			document.querySelectorAll('[data-mail-cta]').forEach((link) => {
+				const email = link.dataset.email;
+				if (email) {
+					link.href = `mailto:${email}?subject=${encodeURIComponent(i18n[current].mailSubject)}`;
+				}
+			});
+			document.querySelectorAll('[data-lang-toggle]').forEach((button) => {
+				button.textContent = next.toUpperCase();
+				button.dataset.lang = next;
+			});
+		};
+
+		applyLang(getCookie('ri-portfolio-lang'));
+		document.querySelectorAll('[data-lang-toggle]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const lang = button.dataset.lang;
+				document.cookie = `ri-portfolio-lang=${lang};path=/;max-age=31536000;samesite=lax`;
+				applyLang(lang);
+			});
+		});
+	</script>
 </Layout>

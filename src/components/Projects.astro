@@ -10,9 +10,9 @@ const { t } = Astro.props;
 ---
 
 <section id="proyectos" class="section">
-	<SectionHeading num="04" title={t.projectsTitle} />
+	<SectionHeading num="04" title={t.projectsTitle} i18nKey="projectsTitle" />
 	<div class="projects-empty reveal">
-		<p class="title">{t.projectsEmpty}</p>
-		<p class="sub">{t.projectsEmptySub}</p>
+		<p class="title" data-i18n="projectsEmpty">{t.projectsEmpty}</p>
+		<p class="sub" data-i18n="projectsEmptySub">{t.projectsEmptySub}</p>
 	</div>
 </section>

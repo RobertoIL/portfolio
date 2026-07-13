@@ -2,12 +2,13 @@
 interface Props {
 	num: string;
 	title: string;
+	i18nKey?: string;
 }
 
-const { num, title } = Astro.props;
+const { num, title, i18nKey } = Astro.props;
 ---
 
 <div class="section-heading reveal">
 	<span class="num">{num}</span>
-	<h2>{title}</h2>
+	<h2 data-i18n={i18nKey}>{title}</h2>
 </div>
