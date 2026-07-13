@@ -9,8 +9,6 @@ interface Props {
 }
 
 const { lang, title, description } = Astro.props;
-// Route of this page in the other language, used to honor the saved preference on load.
-const altHref = lang === 'es' ? '/en/' : '/';
 ---
 
 <!doctype html>
@@ -22,10 +20,8 @@ const altHref = lang === 'es' ? '/en/' : '/';
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<script is:inline define:vars={{ lang, altHref }}>
+		<script is:inline>
 			try {
-				const savedLang = localStorage.getItem('ri-portfolio-lang');
-				if (savedLang && savedLang !== lang) location.replace(altHref);
 				const savedTheme = localStorage.getItem('ri-portfolio-theme');
 				const theme =
 					savedTheme ??

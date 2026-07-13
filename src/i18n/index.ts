@@ -3,6 +3,8 @@ export type Lang = 'es' | 'en';
 export interface Job {
 	role: string;
 	company: string;
+	location: string;
+	workMode: string;
 	period: string;
 	bullets: string[];
 }
@@ -35,12 +37,11 @@ const es = {
 	projectsEmptySub: 'Esta sección está en construcción.',
 	contactTitle: 'Contacto',
 	contactBlurb: '¿Tienes un proyecto o una oportunidad en mente? Escríbeme y conversemos.',
-	formName: 'Nombre',
-	formMessage: 'Mensaje',
-	formSend: 'Enviar mensaje',
+	contactCta: 'Enviar correo',
 	footerNote: 'Hecho con dedicación desde el sur de Chile',
 	themeToggleLabel: 'Cambiar tema',
-	mailSubject: 'Contacto desde portafolio — ',
+	menuToggleLabel: 'Abrir menú',
+	mailSubject: 'Contacto desde portafolio',
 };
 
 const en: typeof es = {
@@ -71,12 +72,11 @@ const en: typeof es = {
 	projectsEmptySub: 'This section is under construction.',
 	contactTitle: 'Contact',
 	contactBlurb: 'Have a project or opportunity in mind? Write me and let’s talk.',
-	formName: 'Name',
-	formMessage: 'Message',
-	formSend: 'Send message',
+	contactCta: 'Send email',
 	footerNote: 'Made with care from southern Chile',
 	themeToggleLabel: 'Toggle theme',
-	mailSubject: 'Portfolio contact — ',
+	menuToggleLabel: 'Open menu',
+	mailSubject: 'Portfolio contact',
 };
 
 export type Translations = typeof es;
@@ -87,7 +87,9 @@ export const jobs: Record<Lang, Job[]> = {
 	es: [
 		{
 			role: 'Desarrollador de Software',
-			company: 'XpertIA · Temuco (Remoto)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Remoto',
 			period: 'Ene 2026 — Actualidad',
 			bullets: [
 				'Desarrollo frontend, integración y validación de un Sistema de Gestión del Aprendizaje (LMS).',
@@ -95,7 +97,9 @@ export const jobs: Record<Lang, Job[]> = {
 		},
 		{
 			role: 'Desarrollador de Software — Práctica profesional',
-			company: 'XpertIA · Temuco (Híbrido)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Híbrido',
 			period: 'Ago 2025 — Dic 2025',
 			bullets: [
 				'Diseño y desarrollo de un LMS orientado a metodologías activas de enseñanza.',
@@ -107,7 +111,9 @@ export const jobs: Record<Lang, Job[]> = {
 		},
 		{
 			role: 'Desarrollador de Software — Tiempo parcial',
-			company: 'XpertIA · Temuco (Híbrido)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Híbrido',
 			period: 'Nov 2024 — Jul 2025',
 			bullets: [
 				'Diseño y desarrollo de la plataforma AprendIA.',
@@ -119,7 +125,9 @@ export const jobs: Record<Lang, Job[]> = {
 	en: [
 		{
 			role: 'Software Developer',
-			company: 'XpertIA · Temuco (Remote)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Remote',
 			period: 'Jan 2026 — Present',
 			bullets: [
 				'Frontend development, integration and validation of a Learning Management System (LMS).',
@@ -127,7 +135,9 @@ export const jobs: Record<Lang, Job[]> = {
 		},
 		{
 			role: 'Software Developer — Internship',
-			company: 'XpertIA · Temuco (Hybrid)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Hybrid',
 			period: 'Aug 2025 — Dec 2025',
 			bullets: [
 				'Design and development of an LMS oriented to active teaching methodologies.',
@@ -139,7 +149,9 @@ export const jobs: Record<Lang, Job[]> = {
 		},
 		{
 			role: 'Software Developer — Part-time',
-			company: 'XpertIA · Temuco (Hybrid)',
+			company: 'XpertIA',
+			location: 'Temuco, Chile',
+			workMode: 'Hybrid',
 			period: 'Nov 2024 — Jul 2025',
 			bullets: [
 				'Design and development of the AprendIA platform.',
@@ -163,8 +175,7 @@ export const techSkills = [
 
 export const contact = {
 	email: 'robertillesca1@gmail.com',
-	phone: '+56 9 3146 8139',
-	phoneHref: 'tel:+56931468139',
 	location: 'La Unión, Los Ríos, Chile',
+	linkedin: 'https://www.linkedin.com/in/roberto-illesca-86545a237',
 	cvPath: '/assets/CV-Roberto-Illesca.pdf',
 };

@@ -1,8 +1,8 @@
 ---
-import type { Translations } from '../i18n';
+import type { Translations } from "../i18n";
 
 interface Props {
-	t: Translations;
+    t: Translations;
 }
 
 const { t } = Astro.props;
@@ -10,8 +10,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-	<div class="container">
-		<span>© {year} Roberto Illesca</span>
-		<span>{t.footerNote}</span>
-	</div>
+    <div class="container">
+        <span>© {year} Roberto Illesca</span>
+    </div>
 </footer>

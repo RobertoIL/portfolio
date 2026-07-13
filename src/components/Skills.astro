@@ -10,27 +10,27 @@ const { t } = Astro.props;
 ---
 
 <section id="habilidades" class="section">
-	<SectionHeading num="02" title={t.skillsTitle} />
+	<SectionHeading num="02" title={t.skillsTitle} i18nKey="skillsTitle" />
 	<div class="skills-grid">
 		<div class="card skills-card reveal">
-			<p class="group-label">{t.skillsTech}</p>
+			<p class="group-label" data-i18n="skillsTech">{t.skillsTech}</p>
 			<div class="chip-list">
 				{techSkills.map((skill) => <span class="chip">{skill}</span>)}
 			</div>
 		</div>
 		<div class="card skills-card stacked reveal">
 			<div>
-				<p class="group-label">{t.skillsMethods}</p>
+				<p class="group-label" data-i18n="skillsMethods">{t.skillsMethods}</p>
 				<div class="chip-list">
 					<span class="chip">Scrum</span>
 					<span class="chip">UX/UI</span>
 				</div>
 			</div>
 			<div>
-				<p class="group-label">{t.skillsLang}</p>
+				<p class="group-label" data-i18n="skillsLang">{t.skillsLang}</p>
 				<div class="chip-list">
-					<span class="chip">{t.spanish}</span>
-					<span class="chip">{t.english}</span>
+					<span class="chip" data-i18n="spanish">{t.spanish}</span>
+					<span class="chip" data-i18n="english">{t.english}</span>
 				</div>
 			</div>
 		</div>

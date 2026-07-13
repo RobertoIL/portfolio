@@ -1,4 +1,5 @@
 ---
+import { ExternalLink, Mail, MapPin, Send } from '@lucide/astro';
 import SectionHeading from './SectionHeading.astro';
 import { contact, type Translations } from '../i18n';
 
@@ -7,56 +8,24 @@ interface Props {
 }
 
 const { t } = Astro.props;
+const mailHref = `mailto:${contact.email}?subject=${encodeURIComponent(t.mailSubject)}`;
 ---
 
 <section id="contacto" class="section contact">
-	<SectionHeading num="05" title={t.contactTitle} />
-	<div class="contact-grid">
-		<div class="contact-info reveal">
-			<p class="blurb">{t.contactBlurb}</p>
-			<a href={`mailto:${contact.email}`} class="contact-line">
-				<span class="icon" aria-hidden="true">✉</span>{contact.email}
-			</a>
-			<a href={contact.phoneHref} class="contact-line">
-				<span class="icon" aria-hidden="true">✆</span>{contact.phone}
-			</a>
-			<span class="contact-line">
-				<span class="icon" aria-hidden="true">📍</span>{contact.location}
-			</span>
-		</div>
-		<form
-			id="contact-form"
-			class="card contact-form reveal"
-			data-email={contact.email}
-			data-subject-prefix={t.mailSubject}
-		>
-			<label>
-				{t.formName}
-				<input name="name" required />
-			</label>
-			<label>
-				Email
-				<input name="email" type="email" required />
-			</label>
-			<label>
-				{t.formMessage}
-				<textarea name="message" required rows="4"></textarea>
-			</label>
-			<button type="submit">{t.formSend}</button>
-		</form>
+	<SectionHeading num="05" title={t.contactTitle} i18nKey="contactTitle" />
+	<div class="contact-info reveal">
+		<p class="blurb" data-i18n="contactBlurb">{t.contactBlurb}</p>
+		<a href={`mailto:${contact.email}`} class="contact-line">
+			<span class="icon" aria-hidden="true"><Mail size={17} /></span>{contact.email}
+		</a>
+		<span class="contact-line">
+			<span class="icon" aria-hidden="true"><MapPin size={17} /></span>{contact.location}
+		</span>
+		<a href={contact.linkedin} class="contact-line" target="_blank" rel="noreferrer">
+			<span class="icon" aria-hidden="true"><ExternalLink size={17} /></span>LinkedIn
+		</a>
+		<a href={mailHref} class="btn-primary contact-cta" data-mail-cta data-email={contact.email}>
+			<Send size={16} aria-hidden="true" /><span data-i18n="contactCta">{t.contactCta}</span>
+		</a>
 	</div>
 </section>
-
-<script>
-	const form = document.getElementById('contact-form') as HTMLFormElement | null;
-	form?.addEventListener('submit', (e) => {
-		e.preventDefault();
-		const data = new FormData(form);
-		const name = String(data.get('name'));
-		const email = String(data.get('email'));
-		const message = String(data.get('message'));
-		const subject = encodeURIComponent(form.dataset.subjectPrefix + name);
-		const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-		location.href = `mailto:${form.dataset.email}?subject=${subject}&body=${body}`;
-	});
-</script>
