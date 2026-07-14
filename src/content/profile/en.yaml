@@ -1,0 +1,34 @@
+lang: en
+meta:
+  title: "Roberto Illesca — Software Engineer"
+  description: "Portfolio of Roberto Illesca, software engineer specialized in efficient, scalable, user-oriented solutions."
+hero:
+  name: "Roberto Illesca"
+  kicker: "Software Engineer"
+  bio: "Software engineer experienced in the full application lifecycle, from design to implementation. Specialist in building efficient, scalable, user-oriented solutions, with strong ability to work in dynamic teams using agile methodologies such as Scrum. Focused on proactive problem solving, effective communication and continuous learning."
+education:
+  degree: "Computer Engineering"
+  institution: "Universidad de La Frontera"
+  location: "Temuco"
+  period: "2021 — 2025"
+skills:
+  technical:
+    - "Angular 18+"
+    - "Next.js"
+    - "Nest.js"
+    - "Spring Boot"
+    - "FastAPI"
+    - "PostgreSQL"
+    - "AWS"
+    - "Git"
+  methods:
+    - "Scrum"
+    - "UX/UI"
+  languages:
+    - "Spanish — Native"
+    - "English — Intermediate (B1)"
+contact:
+  email: "robertillesca1@gmail.com"
+  location: "La Unión, Los Ríos, Chile"
+  linkedin: "https://www.linkedin.com/in/roberto-illesca-86545a237"
+  cvPath: "/assets/CV-Roberto-Illesca.pdf"

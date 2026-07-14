@@ -1,0 +1,13 @@
+lang: es
+role: "Desarrollador de Software — Práctica profesional"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Híbrido"
+period: "Ago 2025 — Dic 2025"
+order: 2
+bullets:
+  - "Diseño y desarrollo de un LMS orientado a metodologías activas de enseñanza."
+  - "Levantamiento y análisis de requerimientos funcionales."
+  - "Modelado del sistema y definición de la arquitectura de la solución."
+  - "Diseño de experiencia e interfaz de usuario (UX/UI)."
+  - "Desarrollo del frontend e integración de componentes y servicios."

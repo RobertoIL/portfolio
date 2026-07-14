@@ -8,73 +8,33 @@ import Experience from './Experience.astro';
 import Projects from './Projects.astro';
 import Contact from './Contact.astro';
 import Footer from './Footer.astro';
-import { translations, type Lang } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+import { ui, type Lang } from '../data/ui';
+
+type ProfileEntry = CollectionEntry<'profile'>;
+type ExperienceEntry = CollectionEntry<'experience'>;
+type ProjectEntry = CollectionEntry<'projects'>;
 
 interface Props {
 	lang: Lang;
+	profile: ProfileEntry;
+	experience: ExperienceEntry[];
+	projects: ProjectEntry[];
 }
 
-const { lang } = Astro.props;
-const t = translations[lang];
-const i18n = translations;
+const { lang, profile, experience, projects } = Astro.props;
+const t = ui[lang];
 ---
 
-<Layout lang={lang} title={t.metaTitle} description={t.metaDescription}>
+<Layout lang={lang} title={profile.data.meta.title} description={profile.data.meta.description}>
 	<Nav lang={lang} t={t} />
 	<main class="container">
-		<Hero t={t} />
-		<Education t={t} />
-		<Skills t={t} />
-		<Experience lang={lang} t={t} />
-		<Projects t={t} />
-		<Contact t={t} />
+		<Hero profile={profile.data} t={t} />
+		<Education education={profile.data.education} t={t} />
+		<Skills skills={profile.data.skills} t={t} />
+		<Experience experience={experience} t={t} />
+		<Projects projects={projects} t={t} />
+		<Contact contact={profile.data.contact} t={t} />
 	</main>
-	<Footer t={t} />
-	<script define:vars={{ i18n }}>
-		const getCookie = (name) =>
-			document.cookie
-				.split('; ')
-				.find((row) => row.startsWith(`${name}=`))
-				?.split('=')[1];
-
-		const applyLang = (lang) => {
-			const current = i18n[lang] ? lang : 'es';
-			const next = current === 'es' ? 'en' : 'es';
-			document.documentElement.lang = current;
-			document.title = i18n[current].metaTitle;
-			document
-				.querySelector('meta[name="description"]')
-				?.setAttribute('content', i18n[current].metaDescription);
-			document.querySelectorAll('[data-i18n]').forEach((el) => {
-				const key = el.getAttribute('data-i18n');
-				if (key && i18n[current][key]) el.textContent = i18n[current][key];
-			});
-			document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
-				const key = el.getAttribute('data-i18n-aria');
-				if (key && i18n[current][key]) el.setAttribute('aria-label', i18n[current][key]);
-			});
-			document.querySelectorAll('[data-lang-panel]').forEach((panel) => {
-				panel.hidden = panel.getAttribute('data-lang-panel') !== current;
-			});
-			document.querySelectorAll('[data-mail-cta]').forEach((link) => {
-				const email = link.dataset.email;
-				if (email) {
-					link.href = `mailto:${email}?subject=${encodeURIComponent(i18n[current].mailSubject)}`;
-				}
-			});
-			document.querySelectorAll('[data-lang-toggle]').forEach((button) => {
-				button.textContent = next.toUpperCase();
-				button.dataset.lang = next;
-			});
-		};
-
-		applyLang(getCookie('ri-portfolio-lang'));
-		document.querySelectorAll('[data-lang-toggle]').forEach((button) => {
-			button.addEventListener('click', () => {
-				const lang = button.dataset.lang;
-				document.cookie = `ri-portfolio-lang=${lang};path=/;max-age=31536000;samesite=lax`;
-				applyLang(lang);
-			});
-		});
-	</script>
+	<Footer profile={profile.data} t={t} />
 </Layout>

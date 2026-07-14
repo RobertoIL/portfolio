@@ -1,0 +1,34 @@
+lang: es
+meta:
+  title: "Roberto Illesca — Ingeniero de Software"
+  description: "Portafolio de Roberto Illesca, ingeniero de software especializado en soluciones eficientes, escalables y orientadas al usuario."
+hero:
+  name: "Roberto Illesca"
+  kicker: "Ingeniero de Software"
+  bio: "Ingeniero de software con experiencia en el ciclo de vida completo de aplicaciones, desde el diseño hasta la implementación. Especialista en soluciones tecnológicas eficientes, escalables y orientadas al usuario, con sólida capacidad para trabajar en equipos dinámicos usando metodologías ágiles como Scrum. Enfocado en la resolución proactiva de problemas, la comunicación efectiva y el aprendizaje continuo."
+education:
+  degree: "Ingeniería Informática"
+  institution: "Universidad de La Frontera"
+  location: "Temuco"
+  period: "2021 — 2025"
+skills:
+  technical:
+    - "Angular 18+"
+    - "Next.js"
+    - "Nest.js"
+    - "Spring Boot"
+    - "FastAPI"
+    - "PostgreSQL"
+    - "AWS"
+    - "Git"
+  methods:
+    - "Scrum"
+    - "UX/UI"
+  languages:
+    - "Español — Nativo"
+    - "Inglés — Intermedio (B1)"
+contact:
+  email: "robertillesca1@gmail.com"
+  location: "La Unión, Los Ríos, Chile"
+  linkedin: "https://www.linkedin.com/in/roberto-illesca-86545a237"
+  cvPath: "/assets/CV-Roberto-Illesca.pdf"

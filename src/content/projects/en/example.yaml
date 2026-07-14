@@ -1,0 +1,9 @@
+lang: en
+title: "Example project"
+description: "Duplicate this file, replace its content, and use draft: false to publish it."
+order: 1
+technologies:
+  - "Astro"
+  - "TypeScript"
+featured: false
+draft: true

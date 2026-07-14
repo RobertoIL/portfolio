@@ -1,21 +1,25 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import type { Translations } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+import type { UiText } from '../data/ui';
+
+type Education = CollectionEntry<'profile'>['data']['education'];
 
 interface Props {
-	t: Translations;
+	education: Education;
+	t: UiText;
 }
 
-const { t } = Astro.props;
+const { education, t } = Astro.props;
 ---
 
 <section id="educacion" class="section">
-	<SectionHeading num="01" title={t.eduTitle} i18nKey="eduTitle" />
+	<SectionHeading num="01" title={t.eduTitle} />
 	<div class="card edu-card reveal">
 		<div class="edu-info">
-			<h3 data-i18n="eduDegree">{t.eduDegree}</h3>
-			<p>Universidad de La Frontera · Temuco</p>
+			<h3>{education.degree}</h3>
+			<p>{education.institution} · {education.location}</p>
 		</div>
-		<span class="period-chip">2021 — 2025</span>
+		<span class="period-chip">{education.period}</span>
 	</div>
 </section>

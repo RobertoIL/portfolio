@@ -1,16 +1,20 @@
 ---
-import type { Translations } from "../i18n";
+import type { CollectionEntry } from "astro:content";
+import type { UiText } from "../data/ui";
+
+type Profile = CollectionEntry<"profile">["data"];
 
 interface Props {
-    t: Translations;
+	profile: Profile;
+	t: UiText;
 }
 
-const { t } = Astro.props;
+const { profile, t } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-    <div class="container">
-        <span>© {year} Roberto Illesca</span>
-    </div>
+	<div class="container">
+		<span>© {year} {profile.hero.name}</span>
+	</div>
 </footer>

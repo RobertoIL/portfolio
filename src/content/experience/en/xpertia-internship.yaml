@@ -1,0 +1,13 @@
+lang: en
+role: "Software Developer — Internship"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Hybrid"
+period: "Aug 2025 — Dec 2025"
+order: 2
+bullets:
+  - "Design and development of an LMS oriented to active teaching methodologies."
+  - "Gathering and analysis of functional requirements."
+  - "System modeling and solution architecture definition."
+  - "User experience and interface design (UX/UI)."
+  - "Frontend development and integration of components and services."

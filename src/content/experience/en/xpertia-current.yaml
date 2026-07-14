@@ -1,0 +1,9 @@
+lang: en
+role: "Software Developer"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Remote"
+period: "Jan 2026 — Present"
+order: 1
+bullets:
+  - "Frontend development, integration and validation of a Learning Management System (LMS)."
