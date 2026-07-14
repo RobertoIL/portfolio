@@ -12,6 +12,10 @@ interface Props {
 
 const { profile, t } = Astro.props;
 const { contact, hero } = profile;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const cvHref = `${baseUrl}${contact.cvPath.replace(/^\//, '')}`;
 ---
 
 <section id="descripcion" class="hero">
@@ -19,7 +23,7 @@ const { contact, hero } = profile;
 	<h1 class="reveal">{hero.name}</h1>
 	<p class="hero-bio reveal">{hero.bio}</p>
 	<div class="hero-actions reveal">
-		<a href={contact.cvPath} download={`CV ${hero.name}.pdf`} class="btn-primary">
+		<a href={cvHref} download={`CV ${hero.name}.pdf`} class="btn-primary">
 			<Download size={16} aria-hidden="true" /><span>{t.cvButton}</span>
 		</a>
 		<a href="#contacto" class="btn-outline">{t.heroContact}</a>

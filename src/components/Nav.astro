@@ -9,7 +9,10 @@ interface Props {
 
 const { lang, t } = Astro.props;
 const altLang = lang === 'es' ? 'en' : 'es';
-const langHref = altLang === 'es' ? '/' : '/en/';
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
+const langHref = altLang === 'es' ? baseUrl : `${baseUrl}en/`;
 ---
 
 <nav class="site-nav">
