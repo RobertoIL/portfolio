@@ -1,36 +1,36 @@
 ---
 import { Moon, Sun } from '@lucide/astro';
-import type { Lang, Translations } from "../i18n";
+import type { Lang, UiText } from '../data/ui';
 
 interface Props {
 	lang: Lang;
-	t: Translations;
+	t: UiText;
 }
 
 const { lang, t } = Astro.props;
-const altLang = lang === "es" ? "en" : "es";
+const altLang = lang === 'es' ? 'en' : 'es';
+const langHref = altLang === 'es' ? '/' : '/en/';
 ---
 
 <nav class="site-nav">
 	<div class="container">
 		<a href="#descripcion" class="brand">RI</a>
 		<div class="nav-links" id="nav-menu">
-			<a href="#educacion" data-i18n="navEdu">{t.navEdu}</a>
-			<a href="#habilidades" data-i18n="navSkills">{t.navSkills}</a>
-			<a href="#experiencia" data-i18n="navExp">{t.navExp}</a>
-			<a href="#proyectos" data-i18n="navProjects">{t.navProjects}</a>
-			<a href="#contacto" data-i18n="navContact">{t.navContact}</a>
+			<a href="#educacion">{t.navEdu}</a>
+			<a href="#habilidades">{t.navSkills}</a>
+			<a href="#experiencia">{t.navExp}</a>
+			<a href="#proyectos">{t.navProjects}</a>
+			<a href="#contacto">{t.navContact}</a>
 		</div>
 		<div class="nav-actions">
-			<button class="lang-toggle" type="button" data-lang-toggle data-lang={altLang}>{altLang.toUpperCase()}</button>
-			<button class="theme-toggle" aria-label={t.themeToggleLabel} data-i18n-aria="themeToggleLabel">
+			<a class="lang-toggle" href={langHref} aria-label={t.langSwitchLabel}>{altLang.toUpperCase()}</a>
+			<button class="theme-toggle" aria-label={t.themeToggleLabel}>
 				<Moon class="icon-moon" size={16} aria-hidden="true" />
 				<Sun class="icon-sun" size={16} aria-hidden="true" />
 			</button>
 			<button
 				class="nav-burger"
 				aria-label={t.menuToggleLabel}
-				data-i18n-aria="menuToggleLabel"
 				aria-expanded="false"
 				aria-controls="nav-menu"
 			>
@@ -43,25 +43,25 @@ const altLang = lang === "es" ? "en" : "es";
 </nav>
 
 <script>
-	document.querySelector(".theme-toggle")?.addEventListener("click", () => {
+	document.querySelector('.theme-toggle')?.addEventListener('click', () => {
 		const root = document.documentElement;
-		const theme = root.dataset.theme === "dark" ? "light" : "dark";
+		const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
 		root.dataset.theme = theme;
-		localStorage.setItem("ri-portfolio-theme", theme);
+		localStorage.setItem('ri-portfolio-theme', theme);
 	});
 
-	const nav = document.querySelector(".site-nav");
-	const burger = document.querySelector<HTMLButtonElement>(".nav-burger");
+	const nav = document.querySelector('.site-nav');
+	const burger = document.querySelector<HTMLButtonElement>('.nav-burger');
 
-	burger?.addEventListener("click", () => {
-		const open = nav?.classList.toggle("is-open") ?? false;
-		burger.setAttribute("aria-expanded", String(open));
+	burger?.addEventListener('click', () => {
+		const open = nav?.classList.toggle('is-open') ?? false;
+		burger.setAttribute('aria-expanded', String(open));
 	});
 
-	document.querySelectorAll(".nav-links a").forEach((link) => {
-		link.addEventListener("click", () => {
-			nav?.classList.remove("is-open");
-			burger?.setAttribute("aria-expanded", "false");
+	document.querySelectorAll('.nav-links a').forEach((link) => {
+		link.addEventListener('click', () => {
+			nav?.classList.remove('is-open');
+			burger?.setAttribute('aria-expanded', 'false');
 		});
 	});
 </script>

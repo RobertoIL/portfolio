@@ -1,21 +1,23 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { jobs, type Lang, type Translations } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+import type { UiText } from '../data/ui';
+
+type ExperienceEntry = CollectionEntry<'experience'>;
 
 interface Props {
-	lang: Lang;
-	t: Translations;
+	experience: ExperienceEntry[];
+	t: UiText;
 }
 
-const { lang, t } = Astro.props;
+const { experience, t } = Astro.props;
 ---
 
 <section id="experiencia" class="section">
-	<SectionHeading num="03" title={t.expTitle} i18nKey="expTitle" />
-	{(['es', 'en'] as const).map((panelLang) => (
-	<div class="timeline" data-lang-panel={panelLang} hidden={panelLang !== lang}>
+	<SectionHeading num="03" title={t.expTitle} />
+	<div class="timeline">
 		{
-			jobs[panelLang].map((job) => (
+			experience.map(({ data: job }) => (
 				<div class="timeline-item reveal">
 					<div class="timeline-marker">
 						<span class="dot" />
@@ -37,5 +39,4 @@ const { lang, t } = Astro.props;
 			))
 		}
 	</div>
-	))}
 </section>

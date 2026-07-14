@@ -1,0 +1,9 @@
+lang: es
+title: "Proyecto de ejemplo"
+description: "Duplica este archivo, cambia su contenido y usa draft: false para publicarlo."
+order: 1
+technologies:
+  - "Astro"
+  - "TypeScript"
+featured: false
+draft: true

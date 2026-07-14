@@ -1,18 +1,46 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import type { Translations } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+import type { UiText } from '../data/ui';
+
+type ProjectEntry = CollectionEntry<'projects'>;
 
 interface Props {
-	t: Translations;
+	projects: ProjectEntry[];
+	t: UiText;
 }
 
-const { t } = Astro.props;
+const { projects, t } = Astro.props;
 ---
 
 <section id="proyectos" class="section">
-	<SectionHeading num="04" title={t.projectsTitle} i18nKey="projectsTitle" />
-	<div class="projects-empty reveal">
-		<p class="title" data-i18n="projectsEmpty">{t.projectsEmpty}</p>
-		<p class="sub" data-i18n="projectsEmptySub">{t.projectsEmptySub}</p>
-	</div>
+	<SectionHeading num="04" title={t.projectsTitle} />
+	{
+		projects.length > 0 ? (
+			<div class="projects-grid">
+				{projects.map(({ data: project }) => (
+					<article class="card project-card reveal">
+						<div>
+							<h3>{project.title}</h3>
+							<p>{project.description}</p>
+						</div>
+						{project.technologies.length > 0 && (
+							<div class="chip-list">
+								{project.technologies.map((technology) => <span class="chip">{technology}</span>)}
+							</div>
+						)}
+						<div class="project-links">
+							{project.url && <a href={project.url} target="_blank" rel="noreferrer">Demo</a>}
+							{project.repository && <a href={project.repository} target="_blank" rel="noreferrer">GitHub</a>}
+						</div>
+					</article>
+				))}
+			</div>
+		) : (
+			<div class="projects-empty reveal">
+				<p class="title">{t.projectsEmpty}</p>
+				<p class="sub">{t.projectsEmptySub}</p>
+			</div>
+		)
+	}
 </section>

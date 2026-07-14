@@ -1,23 +1,28 @@
 ---
 import { Download, MapPin } from '@lucide/astro';
-import { contact, type Translations } from '../i18n';
+import type { CollectionEntry } from 'astro:content';
+import type { UiText } from '../data/ui';
+
+type Profile = CollectionEntry<'profile'>['data'];
 
 interface Props {
-	t: Translations;
+	profile: Profile;
+	t: UiText;
 }
 
-const { t } = Astro.props;
+const { profile, t } = Astro.props;
+const { contact, hero } = profile;
 ---
 
 <section id="descripcion" class="hero">
-	<p class="hero-kicker reveal" data-i18n="heroKicker">{t.heroKicker}</p>
-	<h1 class="reveal">Roberto Illesca</h1>
-	<p class="hero-bio reveal" data-i18n="heroBio">{t.heroBio}</p>
+	<p class="hero-kicker reveal">{hero.kicker}</p>
+	<h1 class="reveal">{hero.name}</h1>
+	<p class="hero-bio reveal">{hero.bio}</p>
 	<div class="hero-actions reveal">
-		<a href={contact.cvPath} download="CV Roberto Illesca.pdf" class="btn-primary">
-			<Download size={16} aria-hidden="true" /><span data-i18n="cvButton">{t.cvButton}</span>
+		<a href={contact.cvPath} download={`CV ${hero.name}.pdf`} class="btn-primary">
+			<Download size={16} aria-hidden="true" /><span>{t.cvButton}</span>
 		</a>
-		<a href="#contacto" class="btn-outline" data-i18n="heroContact">{t.heroContact}</a>
+		<a href="#contacto" class="btn-outline">{t.heroContact}</a>
 	</div>
 	<div class="hero-meta reveal">
 		<span><MapPin size={15} aria-hidden="true" />{contact.location}</span>

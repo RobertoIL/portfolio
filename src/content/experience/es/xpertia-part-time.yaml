@@ -1,0 +1,11 @@
+lang: es
+role: "Desarrollador de Software — Tiempo parcial"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Híbrido"
+period: "Nov 2024 — Jul 2025"
+order: 3
+bullets:
+  - "Diseño y desarrollo de la plataforma AprendIA."
+  - "Creación de mockups centrados en optimizar la experiencia de usuario (UX)."
+  - "Desarrollo e integración de componentes clave con Angular, aplicando buenas prácticas."

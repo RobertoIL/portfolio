@@ -141,6 +141,9 @@ a:hover {
 }
 
 .lang-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	font-family: 'Manrope', sans-serif;
 	font-size: 12px;
 	font-weight: 700;
@@ -153,7 +156,7 @@ a:hover {
 	cursor: pointer;
 }
 
-button.lang-toggle {
+.lang-toggle {
 	line-height: 1;
 }
 
@@ -568,6 +571,41 @@ button.lang-toggle {
 }
 
 /* ---------- Projects ---------- */
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 18px;
+}
+
+.project-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 24px;
+}
+
+.project-card h3 {
+	margin: 0 0 10px;
+	font-family: 'Sora', sans-serif;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.project-card p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.65;
+	color: var(--muted);
+}
+
+.project-links {
+	display: flex;
+	gap: 14px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
 .projects-empty {
 	border: 1.5px dashed var(--border);
 	border-radius: var(--radius);

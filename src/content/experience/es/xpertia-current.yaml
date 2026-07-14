@@ -1,0 +1,9 @@
+lang: es
+role: "Desarrollador de Software"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Remoto"
+period: "Ene 2026 — Actualidad"
+order: 1
+bullets:
+  - "Desarrollo frontend, integración y validación de un Sistema de Gestión del Aprendizaje (LMS)."

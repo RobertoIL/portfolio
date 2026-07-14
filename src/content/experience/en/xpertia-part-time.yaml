@@ -1,0 +1,11 @@
+lang: en
+role: "Software Developer — Part-time"
+company: "XpertIA"
+location: "Temuco, Chile"
+workMode: "Hybrid"
+period: "Nov 2024 — Jul 2025"
+order: 3
+bullets:
+  - "Design and development of the AprendIA platform."
+  - "Creation of mockups focused on optimizing user experience (UX)."
+  - "Development and integration of key components with Angular, applying best practices."
