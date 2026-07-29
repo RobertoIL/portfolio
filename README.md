@@ -81,4 +81,12 @@ Los textos cortos de interfaz, como navegación y botones, se editan en `src/dat
 
 ## Despliegue en GitHub Pages
 
-Actualmente el proyecto está configurado para servirse desde la raíz (`/`). Si se despliega en GitHub Pages como project site, necesitarás configurar `base` con el nombre del repositorio o usar un dominio personalizado.
+El sitio se despliega como project site en `https://RobertoIL.github.io/portfolio/`. Por eso,
+`astro.config.mjs` usa `base: '/portfolio'`.
+
+En **Settings → Pages → Build and deployment → Source** del repositorio se debe seleccionar
+**GitHub Actions**. No se debe elegir **Deploy from a branch**: esa opción intenta procesar los
+archivos `.astro` con Jekyll y produce errores de YAML front matter.
+
+El workflow `.github/workflows/deploy.yml` compila y publica el sitio automáticamente después de
+cada push a `main`. También puede ejecutarse manualmente desde la pestaña **Actions**.
