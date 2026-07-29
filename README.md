@@ -75,16 +75,10 @@ Los textos cortos de interfaz, como navegación y botones, se editan en `src/dat
 | Comando        | Acción                                          |
 | :------------- | :---------------------------------------------- |
 | `pnpm install` | Instala las dependencias                        |
-| `pnpm dev`     | Servidor de desarrollo en `localhost:4321`      |
+| `pnpm dev`     | Servidor de desarrollo en `localhost:4321` |
 | `pnpm build`   | Compila el sitio de producción en `./dist/`     |
 | `pnpm preview` | Previsualiza el build localmente                |
 
 ## Despliegue en GitHub Pages
 
-El proyecto está configurado para publicarse en GitHub Pages desde el repositorio `RobertoIL/portfolio`:
-
-- URL final: `https://RobertoIL.github.io/portfolio/`
-- Configuración Astro: `site: 'https://RobertoIL.github.io'` y `base: '/portfolio'`
-- Workflow: `.github/workflows/deploy.yml`
-
-En GitHub, configura `Settings > Pages > Source` como `GitHub Actions`. Cada push a `main` ejecutará el build y desplegará el contenido de `dist/`.
+Actualmente el proyecto está configurado para servirse desde la raíz (`/`). Si se despliega en GitHub Pages como project site, necesitarás configurar `base` con el nombre del repositorio o usar un dominio personalizado.
