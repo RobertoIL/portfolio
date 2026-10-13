@@ -79,14 +79,22 @@ Los textos cortos de interfaz, como navegación y botones, se editan en `src/dat
 | `pnpm build`   | Compila el sitio de producción en `./dist/`     |
 | `pnpm preview` | Previsualiza el build localmente                |
 
-## Despliegue en GitHub Pages
+## Despliegue en Netlify
 
-El sitio se despliega como project site en `https://RobertoIL.github.io/portfolio/`. Por eso,
-`astro.config.mjs` usa `base: '/portfolio'`.
+En Netlify, selecciona **Add new project → Import an existing project**, conecta este repositorio
+y selecciona `main` como rama de producción.
 
-En **Settings → Pages → Build and deployment → Source** del repositorio se debe seleccionar
-**GitHub Actions**. No se debe elegir **Deploy from a branch**: esa opción intenta procesar los
-archivos `.astro` con Jekyll y produce errores de YAML front matter.
+El archivo `netlify.toml` configura automáticamente:
 
-El workflow `.github/workflows/deploy.yml` compila y publica el sitio automáticamente después de
-cada push a `main`. También puede ejecutarse manualmente desde la pestaña **Actions**.
+- **Comando de build:** `pnpm build`.
+- **Directorio de publicación:** `dist`.
+- **Node.js:** 24.
+- **pnpm:** 9.15.9.
+
+El sitio es estático y no necesita el adaptador de Netlify. El contenido en español se sirve en
+`/` y el contenido en inglés en `/en/`, sin el prefijo `/portfolio`.
+`astro.config.mjs` toma la URL pública del sitio de la variable `URL` que proporciona Netlify.
+
+Los pushes a `main` generan nuevos despliegues automáticamente una vez conectado el repositorio.
+El workflow de GitHub Pages fue retirado; si Pages sigue habilitado en el repositorio, desactívalo
+en **Settings → Pages**.
