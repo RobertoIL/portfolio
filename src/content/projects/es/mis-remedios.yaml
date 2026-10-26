@@ -1,0 +1,10 @@
+lang: es
+title: "Mis Remedios"
+description: "Aplicación móvil para la gestión de medicamentos personales, publicada en Google Play Store."
+order: 1
+technologies:
+  - "Flutter"
+  - "SQLite"
+url: "https://play.google.com/store/apps/details?id=com.riltechnologies.mis_remedios&pli=1"
+urlLabel: "Ver en Google Play"
+draft: false

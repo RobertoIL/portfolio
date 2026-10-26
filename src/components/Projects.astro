@@ -30,7 +30,7 @@ const { projects, t } = Astro.props;
 							</div>
 						)}
 						<div class="project-links">
-							{project.url && <a href={project.url} target="_blank" rel="noreferrer">Demo</a>}
+							{project.url && <a href={project.url} target="_blank" rel="noreferrer">{project.urlLabel ?? 'Demo'}</a>}
 							{project.repository && <a href={project.repository} target="_blank" rel="noreferrer">GitHub</a>}
 						</div>
 					</article>
