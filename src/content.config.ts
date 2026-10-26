@@ -60,6 +60,7 @@ const projects = defineCollection({
 		order: z.number(),
 		technologies: z.array(z.string()).default([]),
 		url: z.string().url().optional(),
+		urlLabel: z.string().optional(),
 		repository: z.string().url().optional(),
 		featured: z.boolean().default(false),
 		draft: z.boolean().default(false),
